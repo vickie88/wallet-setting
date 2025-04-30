@@ -1,11 +1,11 @@
 function WalletPage({ language }) {
     try {
-        // —— 分页与数据状态 —— 
+        // —— 分页与数据状态 ——
         const [currentPage, setCurrentPage] = React.useState(1);
         const [assets, setAssets] = React.useState(
             TOTAL_ASSETS.slice(0, ITEMS_PER_PAGE)
         );
-        // —— 新增：现金余额 & 货币单位状态 —— 
+        // —— 顶部现金余额 & 单位状态 ——
         const [cashBalance, setCashBalance] = React.useState(3700.96);
         const [currencyUnit, setCurrencyUnit] = React.useState('USD');
 
@@ -26,11 +26,9 @@ function WalletPage({ language }) {
                         {getTranslation(language, 'totalBalance')}
                     </div>
                     <div className="balance-cash-wrapper">
-                        {/* 现金余额数字 */}
                         <div className="balance-cash-amount">
                             {cashBalance.toFixed(2)}
                         </div>
-                        {/* 切换单位下拉 */}
                         <select
                             className="balance-currency-select"
                             value={currencyUnit}
@@ -60,9 +58,12 @@ function WalletPage({ language }) {
                                 <th>{getTranslation(language, 'asset')}</th>
                                 <th>{getTranslation(language, 'symbol')}</th>
                                 <th>{getTranslation(language, 'market24h')}</th>
-                                <th>{getTranslation(language, 'onOrders')}</th>
-                                <th>{getTranslation(language, 'availableBalance')}</th>
-                                {/* 已移除 “总余额” 列 */}
+                                {/* 确保这些 key 与你的 i18n 配置一致 */}
+                                <th>{getTranslation(language, 'onOrdersCount')}</th>
+                                <th>{getTranslation(language, 'onOrdersAmount')}</th>
+                                <th>{getTranslation(language, 'availableCount')}</th>
+                                <th>{getTranslation(language, 'availableAmount')}</th>
+                                {/* 已移除 Total Balance / totalCount 列 */}
                             </tr>
                         </thead>
                         <tbody>
@@ -71,6 +72,7 @@ function WalletPage({ language }) {
                             ))}
                         </tbody>
                     </table>
+                    {/* Load More 按钮逻辑不变 */}
                     {assets.length < TOTAL_ASSETS.length && (
                         <button
                             className="mt-4 text-center w-full text-blue-600"
