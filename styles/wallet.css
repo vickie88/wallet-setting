@@ -83,3 +83,18 @@
     background-color: #fff;
     cursor: pointer;
 }
+
+
+.dark-theme .balance-currency-select {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border-color: #444;
+}
+
+
+/* 如果下拉选项背景也需要适配，可一并加上 */
+
+.dark-theme .balance-currency-select option {
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
