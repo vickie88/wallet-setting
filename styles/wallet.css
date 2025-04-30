@@ -85,6 +85,8 @@
 }
 
 
+/* 新增：暗黑模式下下拉菜单配色 */
+
 .dark-theme .balance-currency-select {
     background-color: #2d2d2d;
     color: #ffffff;
