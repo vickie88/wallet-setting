@@ -64,3 +64,22 @@
     background-color: #2d2d2d;
     color: #fff;
 }
+
+.balance-cash-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.balance-cash-amount {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.balance-currency-select {
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    cursor: pointer;
+}
