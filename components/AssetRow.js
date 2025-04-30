@@ -12,7 +12,7 @@ function AssetRow({ asset }) {
                 </td>
                 <td>${asset.onOrders}</td>
                 <td>${asset.market}</td>
-                <td>${asset.total}</td>
+                {/* 已移除 asset.total 列 */}
             </tr>
         );
     } catch (error) {
