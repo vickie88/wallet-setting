@@ -1,0 +1,124 @@
+function RealTimeMarket({ language }) {
+    // 示例数据，可替换为真实数据
+    const tokens = [
+        { icon: 'fab fa-bitcoin', name: 'Bitcoin', symbol: 'BTC', price: '19,266.6454898', change: 2.05, marketCap: '357,466,449,337', volume: '49,046,886,271' },
+        // ... 其他币种
+    ];
+
+    return (
+        <div className="main-content" data-name="real-time-market">
+            {/* 顶部搜索区 */}
+            <div className="flex items-center justify-between mt-6 mb-6">
+                <div className="text-2xl font-bold">{getTranslation(language, 'realTimeMarket')}</div>
+                <div className="flex items-center gap-4">
+                    <input className="search-input" placeholder={getTranslation(language, 'search')} />
+                    <select className="bg-transparent">
+                        <option value="en">English</option>
+                        <option value="zh">简体中文</option>
+                    </select>
+                    <div className="w-8 h-8 bg-blue-600 rounded-full"></div>
+                </div>
+            </div>
+
+            {/* Banner */}
+            <div className="rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 p-8 mb-8 text-white">
+                <div className="text-2xl font-bold mb-2">What token are you looking for?</div>
+                <div className="mb-4">Search by token name, symbol, or contract address</div>
+                <div className="flex items-center bg-white rounded-lg px-4 py-2 w-96">
+                    <input className="flex-1 outline-none text-black" placeholder="Try ETH, BTC......" />
+                    <i className="fas fa-search text-gray-400"></i>
+                </div>
+            </div>
+
+            {/* 三栏卡片 */}
+            <div className="grid grid-cols-3 gap-6 mb-8">
+                {/* Popular Cryptocurrencies */}
+                <div className="bg-white rounded-xl p-6 shadow">
+                    <div className="font-bold mb-4">Popular Cryptocurrencies</div>
+                    <table className="w-full">
+                        <thead>
+                            <tr>
+                                <th>TOKEN</th>
+                                <th>PRICE</th>
+                                <th>24H</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tokens.map((t, i) => (
+                                <tr key={i}>
+                                    <td><i className={`${t.icon} mr-2`}></i>{t.name}</td>
+                                    <td>${t.price}</td>
+                                    <td className={t.change > 0 ? 'text-green-500' : 'text-red-500'}>
+                                        {t.change > 0 ? '▲' : '▼'} {Math.abs(t.change)}%
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+                {/* Top Gainers */}
+                <div className="bg-white rounded-xl p-6 shadow">
+                    <div className="font-bold mb-4">Top Gainers</div>
+                    {/* ...同上，数据可自定义... */}
+                </div>
+                {/* Highest Trading Volume */}
+                <div className="bg-white rounded-xl p-6 shadow">
+                    <div className="font-bold mb-4">Highest Trading Volume</div>
+                    {/* ...同上，数据可自定义... */}
+                </div>
+            </div>
+
+            {/* 今日行情表格 */}
+            <div className="bg-white rounded-xl p-6 shadow mb-8">
+                <div className="font-bold mb-4">Today's Cryptocurrency Prices</div>
+                <table className="w-full">
+                    <thead>
+                        <tr>
+                            <th>TOKEN</th>
+                            <th>SYMBOL</th>
+                            <th>PRICE</th>
+                            <th>24H</th>
+                            <th>MARKET CAP</th>
+                            <th>VOLUME</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tokens.map((t, i) => (
+                            <tr key={i}>
+                                <td><i className={`${t.icon} mr-2`}></i>{t.name}</td>
+                                <td>{t.symbol}</td>
+                                <td>${t.price}</td>
+                                <td className={t.change > 0 ? 'text-green-500' : 'text-red-500'}>
+                                    {t.change > 0 ? '▲' : '▼'} {Math.abs(t.change)}%
+                                </td>
+                                <td>${t.marketCap}</td>
+                                <td>${t.volume}</td>
+                                <td>
+                                    <a href="#" className="text-blue-600 mr-2">View Details</a>
+                                    <a href="#" className="text-blue-600">Trade Now</a>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                <div className="flex justify-center mt-4">
+                    <button className="bg-blue-600 text-white px-6 py-2 rounded-full">Load more</button>
+                </div>
+            </div>
+
+            {/* AI预测区 */}
+            <div className="flex items-center gap-4 mb-8">
+                <div className="flex items-center gap-2 border rounded-full px-4 py-2">
+                    <i className="fab fa-bitcoin"></i>
+                    <span>BTC</span>
+                </div>
+                <div className="flex-1 border-2 border-blue-500 rounded-xl p-4">
+                    <div className="font-bold mb-2">Investment Advice</div>
+                    {/* 这里可以放AI预测内容 */}
+                </div>
+                <button className="bg-blue-600 text-white px-6 py-2 rounded-full">AI Prediction</button>
+            </div>
+        </div>
+    );
+}
