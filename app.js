@@ -1,6 +1,14 @@
+// 引入所有页面组件
+import RealTimeMarket from './components/RealTimeMarket';
+import WalletPage from './components/WalletPage';
+import SettingsPage from './components/SettingsPage';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
+// ... 其它 import
+
 function App() {
     try {
-        const [currentPage, setCurrentPage] = React.useState('wallet');
+        const [currentPage, setCurrentPage] = React.useState('realTimeMarket'); // 默认首页可设为 realTimeMarket
         const [sidebarCollapsed, setSidebarCollapsed] = React.useState(false);
         const [language, setLanguage] = React.useState('en');
         const [theme, setTheme] = React.useState('light');
@@ -34,6 +42,8 @@ function App() {
                         language={language} 
                         onLanguageChange={handleLanguageChange}
                     />
+                    {/* 新增的 RealTimeMarket 页面 */}
+                    {currentPage === 'realTimeMarket' && <RealTimeMarket language={language} />}
                     {currentPage === 'wallet' && <WalletPage language={language} />}
                     {currentPage === 'settings' && (
                         <SettingsPage 
@@ -43,6 +53,7 @@ function App() {
                             onLanguageChange={handleLanguageChange}
                         />
                     )}
+                    {/* 其它页面... */}
                 </div>
             </div>
         );
@@ -53,5 +64,4 @@ function App() {
     }
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+export default App;
